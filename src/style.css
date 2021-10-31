@@ -1,12 +1,18 @@
+body {
+  background-color: #adadad;
+}
+
 .container {
   font-family: "Saira", sans-serif;
-  color: #334049;
+  color: #353535;
 }
 
 .wrapper {
-  border: solid 1px black;
+  background-color: #949496;
+  border: solid 1px #949496;
   border-radius: 20px;
   box-sizing: border-box;
+  box-shadow: 4px 4px 4px 4px rgb(0 0 0 / 25%);
   display: block;
   padding: 20px;
   margin: 20px auto;
@@ -26,29 +32,37 @@
 }
 .btn,
 #city-search {
+  box-shadow: 2px 2px 4px 2px rgb(0 0 0 / 25%);
   font-weight: 100;
 }
+#city-search {
+  background-color: #bfbfbf;
+  border: solid 1px #bfbfbf;
+}
 #search-button {
-  background-color: #61a5d8;
-  border: solid 1px #61a5d8;
+  background-color: #ce5e40;
+  border: solid 1px #ce5e40;
   transition: all 150ms ease-in-out;
 }
 #search-button:hover {
-  background-color: #5393c1;
+  background-color: #b55034;
+  border: solid 1px #b55034;
 }
 #location-button {
-  background-color: #5f7789;
-  border: solid 1px #5f7789;
+  background-color: #626263;
+  border: solid 1px #6f6f70;
   text-align: center;
   transition: all 150ms ease-in-out;
 }
 #location-button:hover {
-  background-color: #2e3c44;
+  background-color: #48484a;
+  border: solid 1px #48484a;
 }
 
 /*end of search bar styling*/
 
 .card {
+  background-color: #949496;
   border: none;
 }
 
@@ -76,18 +90,14 @@
   position: relative;
   top: 0;
 }
-.current-temp {
-  color: #5f7789;
-}
 .units {
-  color: #334049;
   font-size: 18px;
   font-weight: 300;
   position: relative;
   top: -12px;
 }
 #celsius-select {
-  color: #eb6e4b;
+  color: #ce5e40;
 }
 #celsius-select:hover {
   cursor: pointer;
@@ -106,15 +116,6 @@
 .current-min-max {
   font-size: 18px;
   font-weight: 300;
-}
-.min {
-  color: #61a5d8;
-}
-.min-max {
-  color: #334049;
-}
-.max {
-  color: #5f7789;
 }
 
 .extra-info {
@@ -156,5 +157,6 @@
 }
 /*end of right column*/
 #footer {
+  font-size: 14px;
   text-align: center;
 }
