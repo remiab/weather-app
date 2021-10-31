@@ -1,0 +1,157 @@
+.container {
+  font-family: "Saira", sans-serif;
+  color: #334049;
+}
+
+.wrapper {
+  border: solid 1px black;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: block;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+/*search bar styling*/
+
+.search-bar,
+.results {
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.btn,
+#city-search {
+  font-weight: 100;
+}
+#search-button {
+  background-color: #61a5d8;
+  border: solid 1px #61a5d8;
+  transition: all 150ms ease-in-out;
+}
+#search-button:hover {
+  background-color: #5393c1;
+}
+#location-button {
+  background-color: #5f7789;
+  border: solid 1px #5f7789;
+  text-align: center;
+  transition: all 150ms ease-in-out;
+}
+#location-button:hover {
+  background-color: #2e3c44;
+}
+
+/*end of search bar styling*/
+
+.card {
+  border: none;
+}
+
+/*results left column*/
+.current-city {
+  font-size: 36px;
+  font-weight: 400;
+}
+.day-time {
+  text-align: right;
+}
+
+#day-time {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.current-icon,
+.current-temp,
+.current-min-max {
+  text-align: center;
+}
+#current-icon {
+  position: relative;
+  top: 0;
+}
+.current-temp {
+  color: #5f7789;
+}
+.units {
+  color: #334049;
+  font-size: 18px;
+  font-weight: 300;
+  position: relative;
+  top: -12px;
+}
+#celsius-select {
+  color: #eb6e4b;
+}
+#celsius-select:hover {
+  cursor: pointer;
+}
+#units-pipe {
+  position: relative;
+  left: -8px;
+}
+#fahrenheit-select {
+  position: relative;
+  left: -17px;
+}
+#fahrenheit-select:hover {
+  cursor: pointer;
+}
+.current-min-max {
+  font-size: 18px;
+  font-weight: 300;
+}
+.min {
+  color: #61a5d8;
+}
+.min-max {
+  color: #334049;
+}
+.max {
+  color: #5f7789;
+}
+
+.extra-info {
+  margin: auto;
+}
+
+.cloud,
+.wind,
+.rain {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/*end of left colum styling*/
+/*right column styling*/
+
+.five-day-forecast {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.five-day {
+  font-size: 14px;
+  justify-content: center;
+  max-height: 20px;
+}
+.five-day.row {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.col-3.five-day {
+  font-weight: 300;
+  text-align: center;
+}
+.forecast {
+  justify-content: center;
+}
+/*end of right column*/
