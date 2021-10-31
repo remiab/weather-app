@@ -37,7 +37,7 @@ function displayData(target, data) {
 
 function getForecastIcon(response, arrayNumber) {
   let icon = response.data.daily[arrayNumber].weather[0].icon;
-  icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  icon = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   icon = `<img src="${icon}">`;
   let target = `#day-${arrayNumber}-icon`;
   displayData(target, icon);
@@ -104,7 +104,7 @@ function retrieveSunRiseSet(response) {
 
 function retrieveIcon(response) {
   let currentIcon = response.data.weather[0].icon;
-  currentIcon = `http://openweathermap.org/img/wn/${currentIcon}@2x.png`;
+  currentIcon = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
   currentIcon = `<img src="${currentIcon}">`;
   displayData("#current-icon", currentIcon);
 }
