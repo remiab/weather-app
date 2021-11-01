@@ -1,13 +1,31 @@
+function formatDate(date) {
+  let weekDays = ["Sun", "Mon", "Tues", "Weds", "Thur", "Fri", "Sat", "Sun"];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  let day = weekDays[date.getDay()];
+  let currentdate = date.getDate();
+  let month = months[date.getMonth()];
+  let year = date.getFullYear();
+  currentDate = `${day}, ${month} ${currentdate} ${year}`;
+  return currentDate;
+}
 function formatWeekDay(date) {
   let weekDays = ["Sun", "Mon", "Tues", "Weds", "Thur", "Fri", "Sat", "Sun"];
   let day = weekDays[date.getDay()];
   return day;
-}
-function displayDate(currentDayTime) {
-  currentDayTime.preventDefault;
-  let outputDay = formatWeekDay(currentDayTime);
-  let displayDay = document.querySelector("#week-day");
-  displayDay.innerHTML = `${outputDay}`;
 }
 function formatTime(date) {
   let hour = date.getHours();
@@ -22,12 +40,6 @@ function formatTime(date) {
   }
   let currentTime = `${hour}:${minute}`;
   return currentTime;
-}
-function displayTime(currentDayTime) {
-  currentDayTime.preventDefault;
-  let outputTime = formatTime(currentDayTime);
-  let displayTime = document.querySelector("#time");
-  displayTime.innerHTML = `${outputTime}`;
 }
 
 function displayData(target, data) {
@@ -108,21 +120,24 @@ function retrieveIcon(response) {
   currentIcon = `<img src="${currentIcon}">`;
   displayData("#current-icon", currentIcon);
 }
-
 function retrieveTemp(response) {
   displayData("#current-temp", Math.round(response.data.main.temp));
   displayData("#current-min", Math.round(response.data.main.temp_min));
   displayData("#current-max", Math.round(response.data.main.temp_max));
 }
-
-/*function retrieveName(response) {
-  let currentCity = response.data.name;
-  let target = "#display-city";
-  displayData(target, currentCity);
-}*/
+function retrieveLastUpdate(response) {
+  let lastUpdate = new Date(response.data.dt * 1000);
+  let currentTime = `Last updated ${formatTime(lastUpdate)}`;
+  let currentDate = `${formatDate(lastUpdate)}`;
+  displayData("#time", currentTime);
+  displayData("#date", currentDate);
+  console.log(lastUpdate);
+}
 
 function cleanData(response) {
+  console.log(response);
   displayData("#display-city", response.data.name);
+  retrieveLastUpdate(response);
   retrieveIcon(response);
   retrieveTemp(response);
   retrieveExtraData(response);
@@ -163,10 +178,6 @@ function searchLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getLocation);
 }
-
-let currentDayTime = new Date();
-displayDate(currentDayTime);
-displayTime(currentDayTime);
 
 requestCityData("London");
 
