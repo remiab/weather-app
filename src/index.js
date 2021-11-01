@@ -77,12 +77,10 @@ function cleanForecast(response, arrayNumber) {
 }
 
 function displayForecast(response) {
-  cleanForecast(response, 1);
-  cleanForecast(response, 2);
-  cleanForecast(response, 3);
-  cleanForecast(response, 4);
-  cleanForecast(response, 5);
-  cleanForecast(response, 6);
+  let arrayNumbers = [1, 2, 3, 4, 5, 6];
+  arrayNumbers.forEach(function (arrayNumber) {
+    cleanForecast(response, arrayNumber);
+  });
 }
 
 function retrieveForecast(lat, long) {
