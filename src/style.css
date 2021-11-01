@@ -36,7 +36,7 @@ body {
   font-weight: 100;
 }
 #city-search {
-  background-color: #90c2e5;
+  background-color: #adc8db;
   border: solid 1px #bfbfbf;
 }
 #search-button {
@@ -61,20 +61,15 @@ body {
 
 /*end of search bar styling*/
 
+/*results upper*/
 .card {
   background-color: #7cafd3;
   border: none;
 }
-
-/*results left column*/
 .current-city {
   font-size: 36px;
   font-weight: 400;
 }
-.day-time {
-  text-align: right;
-}
-
 #day-time {
   font-size: 18px;
   font-weight: 400;
@@ -86,10 +81,7 @@ body {
 .current-min-max {
   text-align: center;
 }
-#current-icon {
-  position: relative;
-  top: 0;
-}
+
 .units {
   font-size: 18px;
   font-weight: 300;
@@ -118,44 +110,36 @@ body {
   font-weight: 300;
 }
 
-.extra-info {
-  margin: auto;
+.current {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 300;
 }
 
-.cloud,
-.wind,
-.rain {
+.current-extra {
   text-align: center;
   font-size: 18px;
   font-weight: 300;
 }
 
-/*end of left colum styling*/
-/*right column styling*/
-
-.five-day-forecast {
-  font-size: 36px;
-  font-weight: 300;
-}
+/*end of results upper styling*/
+/*results lower styling*/
 
 .five-day {
   font-size: 14px;
+  font-weight: 300;
   justify-content: center;
   max-height: 20px;
-}
-.five-day.row {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-.col-3.five-day {
-  font-weight: 300;
   text-align: center;
 }
+
 .forecast {
   justify-content: center;
 }
-/*end of right column*/
+.forecast-weekday {
+  font-weight: 400;
+}
+/*end of lower*/
 #footer {
   font-size: 14px;
   text-align: center;

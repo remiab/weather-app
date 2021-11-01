@@ -58,7 +58,7 @@ function getForecastIcon(response, arrayNumber) {
 function getForecastTemp(response, arrayNumber) {
   let temp = Math.round(response.data.daily[arrayNumber].temp.day);
   let target = `#day-${arrayNumber}-temp`;
-  displayData(target, temp);
+  displayData(target, `${temp}°`);
 }
 
 function getWeekDay(response, arrayNumber) {
@@ -107,7 +107,7 @@ function cleanSun(target, sun) {
   sun = sun * 1000;
   sun = new Date(sun);
   sun = formatTime(sun);
-  displayData(target, sun);
+  displayData(target, ` ${sun} `);
 }
 function retrieveSunRiseSet(response) {
   cleanSun("#sunrise", response.data.sys.sunrise);
@@ -122,8 +122,8 @@ function retrieveIcon(response) {
 }
 function retrieveTemp(response) {
   displayData("#current-temp", Math.round(response.data.main.temp));
-  displayData("#current-min", Math.round(response.data.main.temp_min));
-  displayData("#current-max", Math.round(response.data.main.temp_max));
+  displayData("#current-min", `${Math.round(response.data.main.temp_min)}°`);
+  displayData("#current-max", `${Math.round(response.data.main.temp_max)}°`);
 }
 function retrieveLastUpdate(response) {
   let lastUpdate = new Date(response.data.dt * 1000);
@@ -131,7 +131,6 @@ function retrieveLastUpdate(response) {
   let currentDate = `${formatDate(lastUpdate)}`;
   displayData("#time", currentTime);
   displayData("#date", currentDate);
-  console.log(lastUpdate);
 }
 
 function cleanData(response) {
@@ -179,10 +178,10 @@ function searchLocation(event) {
   navigator.geolocation.getCurrentPosition(getLocation);
 }
 
-requestCityData("London");
-
 let submitCity = document.querySelector("#search-bar");
 submitCity.addEventListener("submit", searchCity);
 
 let useLocation = document.querySelector("#location-button");
 useLocation.addEventListener("click", searchLocation);
+
+requestCityData("London");
