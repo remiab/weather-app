@@ -55,68 +55,69 @@
               </button>
             </div>
           </form>
-
-          <div class="row results">
-            <div class="col-12">
-              <div class="card current-city mx-3 my-1">
-                <div class="card-body">
-                  <div class="card-title">
-                    <div class="row">
-                      <div class="col-9" id="display-city"></div>
-                      <div class="col-3">
-                        <span id="day-time">
-                          <div id="time"></div>
-                          <div id="date"></div>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row g-3">
-                    <div class="col-6">
-                      <div class="current-icon" id="current-icon">
-                        <img src="#" alt="" />
-                      </div>
-                      <div class="current-temp row">
-                        <span class="current-temp">
-                          <span id="current-temp"></span>
-
-                          <span
-                            class="units celsius-select active"
-                            id="celsius-select"
-                            >°C</span
-                          >
-                          <span class="units" id="units-pipe">|</span>
-                          <span
-                            class="units fahrenheit-select"
-                            id="fahrenheit-select"
-                            >°F</span
-                          >
-                        </span>
-                        <div class="current-min-max">
-                          <span id="current-min"></span>
-                          <span>/</span>
-                          <span id="current-max"></span>
+          <div class="results-wrapper">
+            <div class="row results">
+              <div class="col-12">
+                <div class="card current-city mx-3 my-1">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <div class="row">
+                        <div class="col-9" id="display-city"></div>
+                        <div class="col-3">
+                          <span id="day-time">
+                            <div id="time"></div>
+                            <div id="date"></div>
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6 extra-info mt-4">
-                      <div class="row p-3 odd extra-info">
-                        <div class="col-6 current">Humidity:</div>
-                        <div class="col-6 current-extra">
-                          <span id="humidity"></span> %
+                    <div class="row g-3">
+                      <div class="col-6">
+                        <div class="current-icon" id="current-icon">
+                          <img src="#" alt="" />
+                        </div>
+                        <div class="current-temp row">
+                          <span class="current-temp">
+                            <span id="current-temp"></span>
+
+                            <span
+                              class="units celsius-select active"
+                              id="celsius-select"
+                              >°C</span
+                            >
+                            <span class="units" id="units-pipe">|</span>
+                            <span
+                              class="units fahrenheit-select"
+                              id="fahrenheit-select"
+                              >°F</span
+                            >
+                          </span>
+                          <div class="current-min-max">
+                            <span id="current-min"></span>
+                            <span>/</span>
+                            <span id="current-max"></span>
+                          </div>
                         </div>
                       </div>
-                      <div class="row p-3 odd extra-info">
-                        <div class="col-6 current">Windspeed:</div>
-                        <div class="col-6 current-extra">
-                          <span id="windspeed"></span> kph
+                      <div class="col-6 extra-info mt-4">
+                        <div class="row p-3 odd extra-info">
+                          <div class="col-6 current">Humidity:</div>
+                          <div class="col-6 current-extra">
+                            <span id="humidity"></span> %
+                          </div>
                         </div>
-                      </div>
-                      <div class="row p-3 extra-info">
-                        <div class="col-6 current">Sunrise / Sunset:</div>
-                        <div class="col-6 current-extra">
-                          <span id="sunrise"></span><span>/</span
-                          ><span id="sunset"></span>
+                        <div class="row p-3 odd extra-info">
+                          <div class="col-6 current">Windspeed:</div>
+                          <div class="col-6 current-extra">
+                            <span id="windspeed"></span> km/h
+                          </div>
+                        </div>
+                        <div class="row p-3 extra-info">
+                          <div class="col-6 current">Sunrise / Sunset:</div>
+                          <div class="col-6 current-extra">
+                            <span id="sunrise"></span><span>/</span
+                            ><span id="sunset"></span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -124,62 +125,72 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row mt-1">
-            <div class="col-12">
-              <div class="card five-day-forecast mx-3 my-1">
-                <div class="card-body mb-3">
-                  <div id="five-day-results">
-                    <div class="row p-3 mb-4 forecast">
-                      <div class="col-2">
-                        <div
-                          class="row five-day forecast-weekday"
-                          id="day-1-day"
-                        ></div>
-                        <div class="row five-day" id="day-1-temp">10°</div>
-                        <div class="row five-day" id="day-1-icon">
-                          <img src="#" alt="" class="forecast-icon" />
+            <div class="row mt-1">
+              <div class="col-12">
+                <div class="card five-day-forecast mx-3 my-1">
+                  <div class="card-body mb-3">
+                    <div id="five-day-results">
+                      <div class="row p-3 mb-4 forecast">
+                        <div class="col-2">
+                          <div
+                            class="row five-day forecast-weekday"
+                            id="day-1-day"
+                          ></div>
+                          <div class="row five-day" id="day-1-temp"></div>
+                          <div class="row five-day" id="day-1-icon">
+                            <img src="#" alt="" class="forecast-icon" />
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-2">
-                        <div
-                          class="row five-day forecast-weekday"
-                          id="day-2-day"
-                        ></div>
-                        <div class="row five-day" id="day-2-temp">10°</div>
-                        <div class="row five-day" id="day-2-icon">
-                          <img src="#" alt="" class="forecast-icon" />
+                        <div class="col-2">
+                          <div
+                            class="row five-day forecast-weekday"
+                            id="day-2-day"
+                          ></div>
+                          <div class="row five-day" id="day-2-temp"></div>
+                          <div class="row five-day" id="day-2-icon">
+                            <img src="#" alt="" class="forecast-icon" />
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-2">
-                        <div
-                          class="row five-day forecast-weekday"
-                          id="day-3-day"
-                        ></div>
-                        <div class="row five-day" id="day-3-temp">10°</div>
-                        <div class="row five-day" id="day-3-icon">
-                          <img src="#" alt="" class="forecast-icon" />
+                        <div class="col-2">
+                          <div
+                            class="row five-day forecast-weekday"
+                            id="day-3-day"
+                          ></div>
+                          <div class="row five-day" id="day-3-temp"></div>
+                          <div class="row five-day" id="day-3-icon">
+                            <img src="#" alt="" class="forecast-icon" />
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="col-2">
-                        <div
-                          class="row five-day forecast-weekday"
-                          id="day-4-day"
-                        ></div>
-                        <div class="row five-day" id="day-4-temp">10°</div>
-                        <div class="row five-day" id="day-4-icon">
-                          <img src="#" alt="" class="forecast-icon" />
+                        <div class="col-2">
+                          <div
+                            class="row five-day forecast-weekday"
+                            id="day-4-day"
+                          ></div>
+                          <div class="row five-day" id="day-4-temp"></div>
+                          <div class="row five-day" id="day-4-icon">
+                            <img src="#" alt="" class="forecast-icon" />
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-2">
-                        <div
-                          class="row five-day forecast-weekday"
-                          id="day-5-day"
-                        ></div>
-                        <div class="row five-day" id="day-5-temp">10°</div>
-                        <div class="row five-day" id="day-5-icon">
-                          <img src="#" alt="" class="forecast-icon" />
+                        <div class="col-2">
+                          <div
+                            class="row five-day forecast-weekday"
+                            id="day-5-day"
+                          ></div>
+                          <div class="row five-day" id="day-5-temp"></div>
+                          <div class="row five-day" id="day-5-icon">
+                            <img src="#" alt="" class="forecast-icon" />
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <div
+                            class="row five-day forecast-weekday"
+                            id="day-6-day"
+                          ></div>
+                          <div class="row five-day" id="day-6-temp"></div>
+                          <div class="row five-day" id="day-6-icon">
+                            <img src="#" alt="" class="forecast-icon" />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -191,15 +202,14 @@
         </div>
       </div>
       <div id="footer">
-        coded by Remi Bevan
-        <div>
+        <span>
           <a
             href="https://github.com/remiab/weather-app"
             id="github-link"
             target="_blank"
-            >GitHub Repository</a
-          >
-        </div>
+            >Open-source code</a
+          > </span
+        >by Remi Bevan
       </div>
     </div>
     <script src="src/index.js"></script>

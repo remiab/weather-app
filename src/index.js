@@ -82,6 +82,7 @@ function displayForecast(response) {
   cleanForecast(response, 3);
   cleanForecast(response, 4);
   cleanForecast(response, 5);
+  cleanForecast(response, 6);
 }
 
 function retrieveForecast(lat, long) {
@@ -134,11 +135,15 @@ function retrieveLastUpdate(response) {
 }
 
 function cleanData(response) {
-  console.log(response);
+  celsiusTemp = Math.round(response.data.main.temp);
+  displayData("#current-temp", celsiusTemp);
+  minCelsius = Math.round(response.data.main.temp_min);
+  displayData("#current-min", `${minCelsius}°`);
+  maxCelsius = Math.round(response.data.main.temp_max);
+  displayData("#current-max", `${maxCelsius}°`);
   displayData("#display-city", response.data.name);
   retrieveLastUpdate(response);
   retrieveIcon(response);
-  retrieveTemp(response);
   retrieveExtraData(response);
   retrieveSunRiseSet(response);
   requestForecast(response);
@@ -178,10 +183,43 @@ function searchLocation(event) {
   navigator.geolocation.getCurrentPosition(getLocation);
 }
 
+function switchFahrenheit(event) {
+  let fahrenheitTemp = Math.round(celsiusTemp * (9 / 5) + 32);
+  displayData("#current-temp", fahrenheitTemp);
+  let fahrenheitMin = Math.round(minCelsius * (9 / 5) + 32);
+  displayData("#current-min", `${fahrenheitMin}°`);
+  let fahrenheitMax = Math.round(maxCelsius * (9 / 5) + 32);
+  displayData("#current-max", `${fahrenheitMax}°`);
+  let turnOffCelsius = document.querySelector(".celsius-select");
+  turnOffCelsius.classList.remove("active");
+  let turnOnFahrenheit = document.querySelector(".fahrenheit-select");
+  turnOnFahrenheit.classList.add("active");
+}
+
+function switchCelsius(event) {
+  displayData("#current-temp", celsiusTemp);
+  displayData("#current-min", `${minCelsius}°`);
+  displayData("#current-max", `${maxCelsius}°`);
+  let turnOffFahrenheit = document.querySelector(".fahrenheit-select");
+  turnOffFahrenheit.classList.remove("active");
+  let turnOnCelsius = document.querySelector(".celsius-select");
+  turnOnCelsius.classList.add("active");
+}
+
+let celsiusTemp = null;
+let minCelsius = null;
+let maxCelsius = null;
+
 let submitCity = document.querySelector("#search-bar");
 submitCity.addEventListener("submit", searchCity);
 
 let useLocation = document.querySelector("#location-button");
 useLocation.addEventListener("click", searchLocation);
+
+let unitFahrenheit = document.querySelector("#fahrenheit-select");
+unitFahrenheit.addEventListener("click", switchFahrenheit);
+
+let unitCelsius = document.querySelector("#celsius-select");
+unitCelsius.addEventListener("click", switchCelsius);
 
 requestCityData("London");
