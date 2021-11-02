@@ -113,11 +113,6 @@ function retrieveIcon(response) {
   currentIcon = `<img src="${currentIcon}" class="current-icon-image">`;
   displayData("#current-icon", currentIcon);
 }
-function retrieveTemp(response) {
-  displayData("#current-temp", Math.round(response.data.main.temp));
-  displayData("#current-min", `${Math.round(response.data.main.temp_min)}°`);
-  displayData("#current-max", `${Math.round(response.data.main.temp_max)}°`);
-}
 function retrieveLastUpdate(response) {
   let lastUpdate = new Date(response.data.dt * 1000);
   let currentTime = `Last updated ${formatTime(lastUpdate)}`;
@@ -127,13 +122,11 @@ function retrieveLastUpdate(response) {
 }
 
 function cleanData(response) {
-  celsiusTemp = Math.round(response.data.main.temp);
-  displayData("#current-temp", celsiusTemp);
-  minCelsius = Math.round(response.data.main.temp_min);
-  displayData("#current-min", `${minCelsius}°`);
-  maxCelsius = Math.round(response.data.main.temp_max);
-  displayData("#current-max", `${maxCelsius}°`);
   displayData("#display-city", response.data.name);
+  displayData("#current-comment", `${response.data.weather[0].description}`);
+  displayData("#current-temp", `${Math.round(response.data.main.temp)}`);
+  displayData("#current-min", `${Math.round(response.data.main.temp_min)}°`);
+  displayData("#current-max", `${Math.round(response.data.main.temp_max)}°`);
   retrieveLastUpdate(response);
   retrieveIcon(response);
   retrieveExtraData(response);
