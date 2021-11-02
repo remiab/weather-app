@@ -15,6 +15,7 @@ body {
   box-shadow: 4px 4px 4px 4px rgb(0 0 0 / 25%);
   display: block;
   padding: 20px;
+  max-width: 650px;
   margin: 20px auto;
 }
 
@@ -42,6 +43,8 @@ body {
 #search-button {
   background-color: #ce5e40;
   border: solid 1px #ce5e40;
+  font-size: 14px;
+  text-align: center;
   transition: all 150ms ease-in-out;
 }
 #search-button:hover {
@@ -51,6 +54,7 @@ body {
 #location-button {
   background-color: #626263;
   border: solid 1px #6f6f70;
+  font-size: 14px;
   text-align: center;
   transition: all 150ms ease-in-out;
 }
@@ -86,43 +90,37 @@ body {
   text-align: right;
 }
 
+.left-hand-col {
+  align-items: center;
+}
+.current-comment {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  top: -20px;
+}
+.current-comment::first-letter {
+  text-transform: capitalize;
+}
+
+.current-comment,
 .current-icon,
 .current-temp,
 .current-min-max {
   text-align: center;
 }
+.current-icon-image {
+  position: relative;
+  left: -5px;
+}
 
-.units {
+.celsius {
+  color: #353535;
   font-size: 18px;
   font-weight: 400;
   position: relative;
   top: -12px;
-}
-
-.celsius-select {
-  cursor: pointer;
-  color: #353535;
-}
-.celsius-select.active {
-  color: #ce5e40;
-  cursor: default;
-}
-#units-pipe {
-  position: relative;
-  left: -8px;
-}
-#fahrenheit-select {
-  position: relative;
-  left: -17px;
-}
-
-.fahrenheit-select {
-  cursor: pointer;
-  color: #353535;
-}
-.fahrenheit-select.active {
-  color: #ce5e40;
-  cursor: default;
 }
 
 .current-min-max {

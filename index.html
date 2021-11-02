@@ -28,7 +28,7 @@
     <div class="container">
       <div class="wrapper col-8">
         <div class="weather-app">
-          <form class="row m-4 search-bar" id="search-bar">
+          <form class="row m-3 search-bar" id="search-bar">
             <div class="col-6">
               <input
                 type="search"
@@ -37,7 +37,7 @@
                 class="form-control"
               />
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <input
                 type="submit"
                 class="btn btn-primary"
@@ -45,7 +45,7 @@
                 value="Search"
               />
             </div>
-            <div class="col-3">
+            <div class="col-4">
               <button
                 type="button"
                 class="btn btn-secondary"
@@ -62,8 +62,8 @@
                   <div class="card-body">
                     <div class="card-title">
                       <div class="row">
-                        <div class="col-9" id="display-city"></div>
-                        <div class="col-3">
+                        <div class="col-7" id="display-city"></div>
+                        <div class="col-5">
                           <span id="day-time">
                             <div id="time"></div>
                             <div id="date"></div>
@@ -71,49 +71,52 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row g-3">
-                      <div class="col-6">
-                        <div class="current-icon" id="current-icon">
-                          <img src="#" alt="" />
-                        </div>
-                        <div class="current-temp row">
-                          <span class="current-temp">
-                            <span id="current-temp"></span>
+                    <div class="row g-4 mt-3">
+                      <div class="col-5 mt-2">
+                        <div class="left-hand-col row">
+                          <div class="col-6">
+                            <div class="current-icon" id="current-icon">
+                              <img src="#" alt="" class="current-icon-image" />
+                            </div>
 
-                            <span
-                              class="units celsius-select active"
-                              id="celsius-select"
-                              >°C</span
+                            <div
+                              class="current-comment row"
+                              id="current-comment"
                             >
-                            <span class="units" id="units-pipe">|</span>
-                            <span
-                              class="units fahrenheit-select"
-                              id="fahrenheit-select"
-                              >°F</span
-                            >
-                          </span>
-                          <div class="current-min-max">
-                            <span id="current-min"></span>
-                            <span>/</span>
-                            <span id="current-max"></span>
+                              clear sky
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="current-temp row">
+                              <span class="current-temp">
+                                <span id="current-temp"></span>
+
+                                <span class="celsius">°C</span>
+                              </span>
+                              <div class="current-min-max">
+                                <span id="current-min"></span>
+                                <span>/</span>
+                                <span id="current-max"></span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-6 extra-info mt-4">
-                        <div class="row p-3 odd extra-info">
+                      <div class="col-7 extra-info mt-4">
+                        <div class="row p-1 odd extra-info">
                           <div class="col-6 current">Humidity:</div>
                           <div class="col-6 current-extra">
                             <span id="humidity"></span> %
                           </div>
                         </div>
-                        <div class="row p-3 odd extra-info">
+                        <div class="row p-1 odd extra-info">
                           <div class="col-6 current">Windspeed:</div>
                           <div class="col-6 current-extra">
                             <span id="windspeed"></span> km/h
                           </div>
                         </div>
-                        <div class="row p-3 extra-info">
-                          <div class="col-6 current">Sunrise / Sunset:</div>
+                        <div class="row p-1 extra-info">
+                          <div class="col-6 current">Sunrise / set:</div>
                           <div class="col-6 current-extra">
                             <span id="sunrise"></span><span>/</span
                             ><span id="sunset"></span>
@@ -126,7 +129,7 @@
               </div>
             </div>
             <div class="card-body mb-3">
-              <div class="row p-3 mb-4 forecast" id="five-day-results"></div>
+              <div class="row p-3 forecast" id="five-day-results"></div>
             </div>
           </div>
         </div>

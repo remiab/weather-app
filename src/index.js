@@ -47,30 +47,17 @@ function displayData(target, data) {
   pageLocation.innerHTML = `${data}`;
 }
 
-function getForecastIcon(response, arrayNumber) {
+function cleanForecast(response, arrayNumber) {
+  let day = response.data.daily[arrayNumber].dt;
+  day = new Date(day * 1000);
+  day = formatWeekDay(day);
+  displayData(`#day-${arrayNumber}-day`, day);
+  let temp = Math.round(response.data.daily[arrayNumber].temp.day);
+  displayData(`#day-${arrayNumber}-temp`, `${temp}°`);
   let icon = response.data.daily[arrayNumber].weather[0].icon;
   icon = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   icon = `<img src="${icon}">`;
-  let target = `#day-${arrayNumber}-icon`;
-  displayData(target, icon);
-}
-function getForecastTemp(response, arrayNumber) {
-  let temp = Math.round(response.data.daily[arrayNumber].temp.day);
-  let target = `#day-${arrayNumber}-temp`;
-  displayData(target, `${temp}°`);
-}
-function getWeekDay(response, arrayNumber) {
-  let day = response.data.daily[arrayNumber].dt;
-  day = day * 1000;
-  day = new Date(day);
-  day = formatWeekDay(day);
-  let target = `#day-${arrayNumber}-day`;
-  displayData(target, day);
-}
-function cleanForecast(response, arrayNumber) {
-  getWeekDay(response, arrayNumber);
-  getForecastTemp(response, arrayNumber);
-  getForecastIcon(response, arrayNumber);
+  displayData(`#day-${arrayNumber}-icon`, icon);
 }
 function displayForecast(response) {
   let arrayNumbers = [1, 2, 3, 4, 5, 6];
@@ -123,7 +110,7 @@ function retrieveSunRiseSet(response) {
 function retrieveIcon(response) {
   let currentIcon = response.data.weather[0].icon;
   currentIcon = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
-  currentIcon = `<img src="${currentIcon}">`;
+  currentIcon = `<img src="${currentIcon}" class="current-icon-image">`;
   displayData("#current-icon", currentIcon);
 }
 function retrieveTemp(response) {
@@ -183,43 +170,10 @@ function searchLocation(event) {
   navigator.geolocation.getCurrentPosition(requestLocationData);
 }
 
-function switchFahrenheit(event) {
-  let fahrenheitTemp = Math.round(celsiusTemp * (9 / 5) + 32);
-  displayData("#current-temp", fahrenheitTemp);
-  let fahrenheitMin = Math.round(minCelsius * (9 / 5) + 32);
-  displayData("#current-min", `${fahrenheitMin}°`);
-  let fahrenheitMax = Math.round(maxCelsius * (9 / 5) + 32);
-  displayData("#current-max", `${fahrenheitMax}°`);
-  let turnOffCelsius = document.querySelector(".celsius-select");
-  turnOffCelsius.classList.remove("active");
-  let turnOnFahrenheit = document.querySelector(".fahrenheit-select");
-  turnOnFahrenheit.classList.add("active");
-}
-
-function switchCelsius(event) {
-  displayData("#current-temp", celsiusTemp);
-  displayData("#current-min", `${minCelsius}°`);
-  displayData("#current-max", `${maxCelsius}°`);
-  let turnOffFahrenheit = document.querySelector(".fahrenheit-select");
-  turnOffFahrenheit.classList.remove("active");
-  let turnOnCelsius = document.querySelector(".celsius-select");
-  turnOnCelsius.classList.add("active");
-}
-
-let celsiusTemp = null;
-let minCelsius = null;
-let maxCelsius = null;
-
 let submitCity = document.querySelector("#search-bar");
 submitCity.addEventListener("submit", searchCity);
 
 let useLocation = document.querySelector("#location-button");
 useLocation.addEventListener("click", searchLocation);
-
-let unitFahrenheit = document.querySelector("#fahrenheit-select");
-unitFahrenheit.addEventListener("click", switchFahrenheit);
-
-let unitCelsius = document.querySelector("#celsius-select");
-unitCelsius.addEventListener("click", switchCelsius);
 
 requestCityData("London");
