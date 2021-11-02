@@ -54,13 +54,11 @@ function getForecastIcon(response, arrayNumber) {
   let target = `#day-${arrayNumber}-icon`;
   displayData(target, icon);
 }
-
 function getForecastTemp(response, arrayNumber) {
   let temp = Math.round(response.data.daily[arrayNumber].temp.day);
   let target = `#day-${arrayNumber}-temp`;
   displayData(target, `${temp}°`);
 }
-
 function getWeekDay(response, arrayNumber) {
   let day = response.data.daily[arrayNumber].dt;
   day = day * 1000;
@@ -69,21 +67,37 @@ function getWeekDay(response, arrayNumber) {
   let target = `#day-${arrayNumber}-day`;
   displayData(target, day);
 }
-
 function cleanForecast(response, arrayNumber) {
   getWeekDay(response, arrayNumber);
   getForecastTemp(response, arrayNumber);
   getForecastIcon(response, arrayNumber);
 }
-
 function displayForecast(response) {
   let arrayNumbers = [1, 2, 3, 4, 5, 6];
+  let forecastHTML = "";
+  arrayNumbers.forEach(function (arrayNumber) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+                  <div
+                    class="row five-day forecast-weekday"
+                    id="day-${arrayNumber}-day"
+                  ></div>
+                  <div class="row five-day" id="day-${arrayNumber}-temp"></div>
+                  <div class="row five-day" id="day-${arrayNumber}-icon">
+                    <img src="#" alt="" class="forecast-icon" />
+                  </div>
+                </div>`;
+  });
+  displayData("#five-day-results", forecastHTML);
+
   arrayNumbers.forEach(function (arrayNumber) {
     cleanForecast(response, arrayNumber);
   });
 }
-
-function retrieveForecast(lat, long) {
+function retrieveForecast(response) {
+  let lat = response.data.coord.lat;
+  let long = response.data.coord.lon;
   let apiEndpoint = `https://api.openweathermap.org/data/2.5/onecall`;
   let apiKey = `4d9f7435922c572a5acb88548fb4b4d0`;
   let unit = `metric`;
@@ -91,17 +105,10 @@ function retrieveForecast(lat, long) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function requestForecast(response) {
-  let latitude = response.data.coord.lat;
-  let longitude = response.data.coord.lon;
-  retrieveForecast(latitude, longitude);
-}
-
 function retrieveExtraData(response) {
   displayData("#windspeed", Math.round(response.data.wind.speed));
   displayData("#humidity", response.data.main.humidity);
 }
-
 function cleanSun(target, sun) {
   sun = sun * 1000;
   sun = new Date(sun);
@@ -144,7 +151,7 @@ function cleanData(response) {
   retrieveIcon(response);
   retrieveExtraData(response);
   retrieveSunRiseSet(response);
-  requestForecast(response);
+  retrieveForecast(response);
 }
 
 function requestCityData(outputCity) {
@@ -162,23 +169,18 @@ function searchCity(event) {
   requestCityData(userCity);
 }
 
-function requestLocationData(lat, long) {
+function requestLocationData(position) {
+  let lat = position.coords.latitude;
+  let long = position.coords.longitude;
   let apiEndpoint = `https://api.openweathermap.org/data/2.5/weather`;
   let apiKey = `4d9f7435922c572a5acb88548fb4b4d0`;
   let unit = `metric`;
   let apiUrl = `${apiEndpoint}?lat=${lat}&lon=${long}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(cleanData);
 }
-
-function getLocation(position) {
-  let lat = position.coords.latitude;
-  let long = position.coords.longitude;
-  requestLocationData(lat, long);
-}
-
 function searchLocation(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(getLocation);
+  navigator.geolocation.getCurrentPosition(requestLocationData);
 }
 
 function switchFahrenheit(event) {
