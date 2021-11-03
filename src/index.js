@@ -63,9 +63,7 @@ function displayForecast(response) {
   let arrayNumbers = [1, 2, 3, 4, 5, 6];
   let forecastHTML = "";
   arrayNumbers.forEach(function (arrayNumber) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+    forecastHTML += `<div class="col-2">
                   <div
                     class="row five-day forecast-weekday"
                     id="day-${arrayNumber}-day"
